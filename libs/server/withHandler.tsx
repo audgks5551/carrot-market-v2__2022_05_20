@@ -9,8 +9,9 @@ export default function withHandler (
             return res.status(405).end();
         }
         try {
-            return fn(req, res);
+            return await fn(req, res);
         } catch (error) {
+            console.log("에러")
             console.log(error)
             return res.status(500).end();
         }
