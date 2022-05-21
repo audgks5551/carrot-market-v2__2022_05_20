@@ -6,6 +6,7 @@ interface UseMutationState {
     error?: object;
 }
 
+
 type UseMutationResult = [(data:any) => void, UseMutationState]
 
 export default function useMutation(url: string): UseMutationResult
@@ -31,5 +32,5 @@ export default function useMutation(url: string): UseMutationResult
             .finally(() => setState((prev) => ({...prev, loading: false})))
     }
 
-    return [mutation, state];
+    return [mutation, { ...state }];
 }

@@ -1,9 +1,11 @@
 import {NextApiRequest, NextApiResponse} from "next";
+import withHandler from "@libs/server/withHandler";
 
-export default async function handler(
+async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    console.log(req.body)
-    res.json({data:true});
+    res.json({execute: true});
 }
+
+export default withHandler("POST", handler);
