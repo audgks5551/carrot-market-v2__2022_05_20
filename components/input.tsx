@@ -1,11 +1,25 @@
+import type { UseFormRegisterReturn } from "react-hook-form/dist/types/form";
+
 interface InputProps {
     label: string;
     name: string;
     kind?: "text" | "phone" | "price";
-    [key: string]: any;
+    register: UseFormRegisterReturn
+    type: string
+    required: boolean
 }
 
-export default function Input({label, name, kind = "text", ...rest}: InputProps) {
+export default function Input(
+
+    {
+        label,
+        name,
+        kind = "text",
+        register,
+        type,
+        required
+    }: InputProps) {
+
     return (
         <div>
             <label
@@ -18,7 +32,9 @@ export default function Input({label, name, kind = "text", ...rest}: InputProps)
                 <div className="rounded-md relative flex  items-center shadow-sm">
                     <input
                         id={name}
-                        {...rest}
+                        type={type}
+                        required={required}
+                        {...register}
                         className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                     />
                 </div>
@@ -30,7 +46,9 @@ export default function Input({label, name, kind = "text", ...rest}: InputProps)
                     </div>
                     <input
                         id={name}
-                        {...rest}
+                        type={type}
+                        required={required}
+                        {...register}
                         className="appearance-none pl-7 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                     />
                     <div className="absolute right-0 pointer-events-none pr-3 flex items-center">
@@ -45,7 +63,9 @@ export default function Input({label, name, kind = "text", ...rest}: InputProps)
           </span>
                     <input
                         id={name}
-                        {...rest}
+                        type={type}
+                        required={required}
+                        {...register}
                         className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                     />
                 </div>
