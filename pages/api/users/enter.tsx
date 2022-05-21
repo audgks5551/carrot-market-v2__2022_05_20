@@ -35,6 +35,8 @@ async function handler(
             body: `확인 번호 [${payload}]`
         })
         console.log(message)
+    } else if (email) {
+
     }
 
     console.log(token)
